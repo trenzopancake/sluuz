@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>triple$$$</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://i.pinimg.com/originals/7a/8e/80/7a8e80ac6cdfa3b387a2f752c10683dd.gif');
+            background-size: cover;
+            background-position: center;
+            animation: backgroundAnimation 20s infinite alternate;
+            overflow: hidden;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: top center;
+            }
+            100% {
+                background-position: bottom center;
+            }
+        }
+
+        /* Black Screen Intro */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        .profile-container {
+            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 25px;
+            padding: 60px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transform: translateY(-20px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            will-change: transform;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 0s ease-in-out 1s;
+        }
+
+        .profile-container.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .profile-container:hover {
+            box-shadow: 0 15px 50px rgba(255, 255, 255, 0.7);
+            transform: translateY(-10px);
+        }
+
+        .profile-image {
+            border-radius: 50%;
+            height: 140px;
+            width: 140px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+        }
+
+        .profile-name {
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .profile-bio {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 25px;
+            font-style: italic;
+            font-weight: 600;
+            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typewriter 5s steps(30) 0s infinite;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+            transform: translateY(-7px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links a img {
+            width: 35px;
+            height: 35px;
+            margin-right: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover img {
+            transform: scale(1.2);
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        .footer a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .view-counter {
+            font-size: 22px;
+            color: #00FF00;
+            margin-top: 25px;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .view-counter:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Black Intro Screen -->
+    <div id="intro-screen">
+        Click anywhere
+    </div>
+
+    <!-- Main Profile Content -->
+    <div class="profile-container">
+        <img src="https://i.pinimg.com/736x/cf/1d/46/cf1d4670685afce6514ecc1ec35c2a0f.jpg" alt="Profile Image" class="profile-image">
+        <h1 class="profile-name">Damn $luz</h1>
+        <p class="profile-bio">a rare one.</p>
+
+        <div class="social-links">
+            <a href="https://discord.gg/jcxpnXfp" target="_blank">
+                <img src="https://cdn.icon-icons.com/icons2/2108/PNG/512/discord_icon_130958.png" alt="Discord"> Saints
+            </a>
+            <a href="https://discord.gg/X7CKUFUm" target="_blank">
+                <img src="https://cdn.icon-icons.com/icons2/2108/PNG/512/discord_icon_130958.png" alt="Discord"> Trapstar
+            </a>
+            <a href="https://www.instagram.com/renceewh/" target="_blank">
+                <img src="https://th.bing.com/th/id/R.26d9974a1feec9905a4e0d5e5ddf8db6?rik=Og1ujXM2C1AJHQ&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fa%2fa5%2fInstagram_icon.png&ehk=1%2fZWXYn2nN%2fR80TOtcKH5SsdLkkUvMLrB%2fHUXRDHk9I%3d&risl=&pid=ImgRaw&r=0" alt="Instagram"> Instagram
+            </a>
+        </div>
+
+        <!-- View Counter -->
+        <p class="view-counter">Views: <span id="viewCount">0</span></p>
+
+        <p class="footer">subok na kita boss | <a href="https://discord.com">saints</a></p>
+    </div>
+
+    <!-- Audio Element for moneytrees.mp3 -->
+    <audio id="audio" src="moneytrees.mp3" autoplay loop></audio>
+
+    <script>
+        // Increment view count on each visit
+        if (!sessionStorage.getItem('viewCount')) {
+            sessionStorage.setItem('viewCount', 0);
+        }
+
+        let viewCount = parseInt(sessionStorage.getItem('viewCount'));
+        viewCount++;
+
+        // Update the view counter and sessionStorage
+        sessionStorage.setItem('viewCount', viewCount);
+
+        // Update the view count display
+        document.getElementById('viewCount').textContent = viewCount;
+
+        // Handle intro screen fade out and show profile content
+        document.getElementById('intro-screen').addEventListener('click', () => {
+            document.getElementById('intro-screen').style.opacity = 0;
+            setTimeout(() => {
+                document.getElementById('intro-screen').style.display = 'none';
+                document.querySelector('.profile-container').classList.add('show');
+            }, 1000); // Faster fade-out transition
+        });
+    </script>
+</body>
+</html>
